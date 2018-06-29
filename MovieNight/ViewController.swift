@@ -10,6 +10,10 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var watcherOne: UILabel!
+    @IBOutlet weak var button1: UIButton!
+    @IBOutlet weak var imageOne: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -20,6 +24,12 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    
+    @IBAction func button1Pressed(_ sender: UIButton) {
+        imageOne.image = #imageLiteral(resourceName: "bubble-selected")
+        button1.setTitle("Ready!", for: .normal)
+    }
+    
 
 }
 
