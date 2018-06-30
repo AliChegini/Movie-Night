@@ -60,6 +60,10 @@ class WatcherOneViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         cell.textLabel?.text = self.allTheGenres[indexPath.row].name
+        
+        let image: UIImage = UIImage(named: "bubble-empty")!
+        cell.imageView?.image = image
+        
         return cell
     }
 

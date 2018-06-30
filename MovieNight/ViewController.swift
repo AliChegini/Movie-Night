@@ -26,8 +26,7 @@ class ViewController: UIViewController {
 
     
     @IBAction func button1Pressed(_ sender: UIButton) {
-        imageOne.image = #imageLiteral(resourceName: "bubble-selected")
-        button1.setTitle("Ready!", for: .normal)
+        
     }
     
 
