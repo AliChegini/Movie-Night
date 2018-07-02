@@ -12,7 +12,7 @@ class WatcherOneViewController: UITableViewController {
 
     let client = MovieNightAPIClient()
     var allTheGenres: [Genre] = []
-    
+    var isRowSelected: Bool? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,20 +36,14 @@ class WatcherOneViewController: UITableViewController {
             }
             print(self.allTheGenres.count)
         }
-        
-        
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        //self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.allTheGenres.count
@@ -58,13 +52,24 @@ class WatcherOneViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
         cell.textLabel?.text = self.allTheGenres[indexPath.row].name
         
-        let image: UIImage = UIImage(named: "bubble-empty")!
-        cell.imageView?.image = image
+        let emptyBubble: UIImage = UIImage(named: "bubble-empty")!
+        cell.imageView?.image = emptyBubble
         
         return cell
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.imageView?.image = UIImage(named: "bubble-selected")!
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.imageView?.image = UIImage(named: "bubble-empty")!
     }
 
 
