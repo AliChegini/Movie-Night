@@ -57,10 +57,10 @@
             </objects>
             <point key="canvasLocation" x="976.79999999999995" y="33.733133433283363"/>
         </scene>
-        <!--Watcher One View Controller-->
+        <!--First Param View Controller-->
         <scene sceneID="hBN-Sq-siO">
             <objects>
-                <tableViewController id="GTJ-B5-NXd" customClass="WatcherOneViewController" customModule="MovieNight" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="GTJ-B5-NXd" customClass="FirstParamViewController" customModule="MovieNight" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="a3F-HH-p6l">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -72,6 +72,9 @@
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <state key="normal" title="Next"/>
+                            <connections>
+                                <segue destination="wEg-Fx-she" kind="show" id="Vmb-Es-9od"/>
+                            </connections>
                         </button>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="iu0-ch-0q0">
@@ -110,6 +113,45 @@
             </objects>
             <point key="canvasLocation" x="1741.5999999999999" y="31.934032983508249"/>
         </scene>
+        <!--Second Param View Controller-->
+        <scene sceneID="FN6-Gb-4We">
+            <objects>
+                <tableViewController id="wEg-Fx-she" customClass="SecondParamViewController" customModule="MovieNight" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="81O-Lp-G2z">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pnr-eq-CVE">
+                            <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="Done"/>
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="show" id="Wlj-Hb-vtz"/>
+                            </connections>
+                        </button>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="MKB-E5-QhK">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MKB-E5-QhK" id="0pe-r8-O4W">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="wEg-Fx-she" id="boa-bw-S5X"/>
+                            <outlet property="delegate" destination="wEg-Fx-she" id="2Ik-Km-wdC"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WS3-d0-daT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2540" y="29"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="eqW-nr-zpb">
             <objects>
@@ -129,4 +171,7 @@
             <point key="canvasLocation" x="37.600000000000001" y="33.733133433283363"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Wlj-Hb-vtz"/>
+    </inferredMetricsTieBreakers>
 </document>

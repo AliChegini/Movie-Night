@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WatcherOneViewController: UITableViewController {
+class FirstParamViewController: UITableViewController {
 
     let client = MovieNightAPIClient()
     var allTheGenres: [Genre] = []
@@ -64,6 +64,7 @@ class WatcherOneViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.imageView?.image = UIImage(named: "bubble-selected")!
+        //print(cell?.textLabel?.text)
     }
     
     
