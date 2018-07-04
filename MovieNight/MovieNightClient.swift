@@ -10,14 +10,18 @@ import Foundation
 
 class MovieNightAPIClient {
     
-    lazy var baseURL: URL = {
+    lazy var genreURL: URL = {
         return URL(string: "https://api.themoviedb.org/3/genre/movie/list?api_key=f0d4d14932ab901d6435839be5924d52&language=en-US")!
     }()
     
-    let downloader = JSONDownloader()
+    lazy var actorURL: URL = {
+        return URL(string: "https://api.themoviedb.org/3/person/popular?api_key=f0d4d14932ab901d6435839be5924d52&language=en-US&page=1")!
+    }()
     
-    func getGenress(completionHandler completion: @escaping (Data?, MovieNightError?) -> Void) {
-        let request = URLRequest(url: baseURL)
+    let downloader = JSONDownloader()
+    // Get genres
+    func getGenres(completionHandler completion: @escaping (Data?, MovieNightError?) -> Void) {
+        let request = URLRequest(url: genreURL)
         print(request)
         
         let task = downloader.dataTask(with: request) { data, error in
@@ -31,6 +35,24 @@ class MovieNightAPIClient {
         
         task.resume()
     }
+    
+    // Get actors
+    func getActors(completionHandler completion: @escaping (Data?, MovieNightError?) -> Void) {
+        let request = URLRequest(url: actorURL)
+        print(request)
+        
+        let task = downloader.dataTask(with: request) { data, error in
+            guard let data = data else {
+                completion(nil, error)
+                return
+            }
+            
+            completion(data, nil)
+        }
+        
+        task.resume()
+    }
+    
     
 }
 

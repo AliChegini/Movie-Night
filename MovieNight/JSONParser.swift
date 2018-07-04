@@ -8,7 +8,7 @@
 
 import Foundation
 
-
+//  Genre  decoding
 struct Genre: Decodable {
     var name: String?
     var id: Int?
@@ -17,11 +17,33 @@ struct Genre: Decodable {
         case name
         case id
     }
-    
 }
 
 
 struct AllGenres: Decodable {
     let genres: [Genre]
 }
+
+
+// Popular decoding
+struct Result: Codable {
+    var name: String?
+    var id: Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case name
+        case id
+    }
+}
+
+struct AllResults: Decodable {
+    let results: [Result]
+}
+
+
+
+
+
+
+
 

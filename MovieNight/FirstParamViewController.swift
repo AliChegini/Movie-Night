@@ -20,7 +20,7 @@ class FirstParamViewController: UITableViewController {
         self.title = "Genres"
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
-        client.getGenress() { genres, error in
+        client.getGenres() { genres, error in
             let decoder = JSONDecoder()
             guard let genres = genres else {
                 print("genre is empty")
@@ -36,6 +36,9 @@ class FirstParamViewController: UITableViewController {
             }
             print(self.allTheGenres.count)
         }
+        
+        
+        
     }
     
 
