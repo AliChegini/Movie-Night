@@ -12,6 +12,7 @@ class SecondParamViewController: UITableViewController {
 
     let client = MovieNightAPIClient()
     var actors: [Result] = []
+    var chosenActors: [Result] = []
     
     
     override func viewDidLoad() {
@@ -65,16 +66,25 @@ class SecondParamViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.imageView?.image = UIImage(named: "bubble-selected")!
+        chosenActors.append(self.actors[indexPath.row])
     }
     
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.imageView?.image = UIImage(named: "bubble-empty")!
+        
+        //let indexToRemove = chosenActors.index(of: )
     }
-
-
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "proceedToMainSegue":
+            let vc = segue.destination as! MainViewController
+            vc.chosenActors = chosenActors
+        default:
+            return
+        }
+    }
     
-
 }

@@ -26,7 +26,7 @@ struct AllGenres: Decodable {
 
 
 // Popular decoding
-struct Result: Codable {
+struct Result: Codable, Equatable {
     var name: String?
     var id: Int?
     

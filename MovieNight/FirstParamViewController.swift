@@ -12,7 +12,7 @@ class FirstParamViewController: UITableViewController {
 
     let client = MovieNightAPIClient()
     var allTheGenres: [Genre] = []
-    var isRowSelected: Bool? = nil
+    var chosenGenres: [Genre] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +56,7 @@ class FirstParamViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = self.allTheGenres[indexPath.row].name
+        chosenGenres.append(self.allTheGenres[indexPath.row])
         
         let emptyBubble: UIImage = UIImage(named: "bubble-empty")!
         cell.imageView?.image = emptyBubble
@@ -67,7 +68,6 @@ class FirstParamViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.imageView?.image = UIImage(named: "bubble-selected")!
-        //print(cell?.textLabel?.text)
     }
     
     
@@ -75,6 +75,8 @@ class FirstParamViewController: UITableViewController {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.imageView?.image = UIImage(named: "bubble-empty")!
     }
+    
+
 
 
 }
