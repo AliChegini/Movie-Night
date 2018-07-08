@@ -9,7 +9,7 @@
 import Foundation
 
 //  Genre  decoding
-struct Genre: Decodable {
+struct Genre: Decodable, Equatable {
     var name: String?
     var id: Int?
     

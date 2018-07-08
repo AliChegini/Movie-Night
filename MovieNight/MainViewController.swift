@@ -14,13 +14,13 @@ class MainViewController: UITableViewController {
     @IBOutlet weak var button: UIButton!
     
     
-    var chosenActors: [Result]?
+    var fullPack: FullPackage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
         
-        print(chosenActors)
+        print(fullPack)
     }
     
     override func didReceiveMemoryWarning() {

@@ -14,6 +14,9 @@ class FirstParamViewController: UITableViewController {
     var allTheGenres: [Genre] = []
     var chosenGenres: [Genre] = []
     
+    var selectedGenres: [Genre] = []
+    var deselectedGenres: [Genre] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,8 +40,6 @@ class FirstParamViewController: UITableViewController {
             print(self.allTheGenres.count)
         }
         
-        
-        
     }
     
 
@@ -56,7 +57,7 @@ class FirstParamViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = self.allTheGenres[indexPath.row].name
-        chosenGenres.append(self.allTheGenres[indexPath.row])
+        
         
         let emptyBubble: UIImage = UIImage(named: "bubble-empty")!
         cell.imageView?.image = emptyBubble
@@ -68,14 +69,27 @@ class FirstParamViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.imageView?.image = UIImage(named: "bubble-selected")!
+        selectedGenres.append(self.allTheGenres[indexPath.row])
+        
     }
     
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.imageView?.image = UIImage(named: "bubble-empty")!
+        deselectedGenres.append(self.allTheGenres[indexPath.row])
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "proceedToActorSegue":
+            chosenGenres = selectedGenres.filter { !deselectedGenres.contains($0)  }
+            let vc = segue.destination as! SecondParamViewController
+            vc.chosenGenres = chosenGenres
+        default:
+            return
+        }
+    }
 
 
 

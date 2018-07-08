@@ -12,7 +12,13 @@ class SecondParamViewController: UITableViewController {
 
     let client = MovieNightAPIClient()
     var actors: [Result] = []
-    var chosenActors: [Result] = []
+    var chosenActors: [Result] = []     // array after filtering deselected
+    var selectedActors: [Result] = []
+    var deselectedActors: [Result] = []
+
+    
+    var chosenGenres: [Genre]? = []     // array recieved from FirstParam
+    //var fullPack: [FullPackage] = []    // array to send to mainView
     
     
     override func viewDidLoad() {
@@ -66,7 +72,10 @@ class SecondParamViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.imageView?.image = UIImage(named: "bubble-selected")!
-        chosenActors.append(self.actors[indexPath.row])
+        selectedActors.append(self.actors[indexPath.row])
+        print("selected")
+        print(selectedActors)
+        print("---")
     }
     
     
@@ -74,14 +83,22 @@ class SecondParamViewController: UITableViewController {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.imageView?.image = UIImage(named: "bubble-empty")!
         
-        //let indexToRemove = chosenActors.index(of: )
+        deselectedActors.append(self.actors[indexPath.row])
+        print("deselected")
+        print(deselectedActors)
+        print("---")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "proceedToMainSegue":
+            chosenActors = selectedActors.filter { !deselectedActors.contains($0)  }
             let vc = segue.destination as! MainViewController
-            vc.chosenActors = chosenActors
+            
+            let fullPack = FullPackage(genres: chosenGenres, actors: chosenActors)
+            
+            vc.fullPack = fullPack
+            print("sending to main")
         default:
             return
         }

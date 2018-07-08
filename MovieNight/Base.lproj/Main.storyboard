@@ -83,7 +83,7 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <state key="normal" title="Next"/>
                             <connections>
-                                <segue destination="wEg-Fx-she" kind="show" id="Vmb-Es-9od"/>
+                                <segue destination="wEg-Fx-she" kind="show" identifier="proceedToActorSegue" id="Vmb-Es-9od"/>
                             </connections>
                         </button>
                         <prototypes>
@@ -127,7 +127,7 @@
         <scene sceneID="FN6-Gb-4We">
             <objects>
                 <tableViewController id="wEg-Fx-she" customClass="SecondParamViewController" customModule="MovieNight" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="81O-Lp-G2z">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="81O-Lp-G2z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -176,7 +176,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WS3-d0-daT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2524" y="-739"/>
+            <point key="canvasLocation" x="2522" y="-738"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eqW-nr-zpb">
@@ -198,7 +198,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gEg-Jw-XaX"/>
+        <segue reference="Vmb-Es-9od"/>
         <segue reference="dee-dN-PvX"/>
     </inferredMetricsTieBreakers>
 </document>
