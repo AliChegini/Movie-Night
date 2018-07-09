@@ -10,6 +10,29 @@ import Foundation
 
 
 struct FullPackage {
+    var watcherNumber: Int
     var genres: [Genre]?
     var actors: [Result]?
 }
+
+
+struct WatcherOneFullPackage {
+    var genres: [Genre]?
+    var actors: [Result]?
+}
+
+
+struct WatcherTwoFullPackage {
+    var genres: [Genre]?
+    var actors: [Result]?
+}
+
+
+
+
+
+
+
+
+
+

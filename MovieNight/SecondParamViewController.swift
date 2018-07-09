@@ -11,13 +11,16 @@ import UIKit
 class SecondParamViewController: UITableViewController {
 
     let client = MovieNightAPIClient()
-    var actors: [Result] = []
-    var chosenActors: [Result] = []     // array after filtering deselected
+    var actors: [Result] = []   // all actors
     var selectedActors: [Result] = []
     var deselectedActors: [Result] = []
-
+    // array after filtering deselected
+    var chosenActors: [Result] = []
     
-    var chosenGenres: [Genre]? = []     // array recieved from FirstParam
+
+    // recieving from FirstParam
+    var chosenGenres: [Genre]? = []
+    var watcherNumber: Int?
     //var fullPack: [FullPackage] = []    // array to send to mainView
     
     
@@ -95,7 +98,7 @@ class SecondParamViewController: UITableViewController {
             chosenActors = selectedActors.filter { !deselectedActors.contains($0)  }
             let vc = segue.destination as! MainViewController
             
-            let fullPack = FullPackage(genres: chosenGenres, actors: chosenActors)
+            let fullPack = FullPackage(watcherNumber: watcherNumber!, genres: chosenGenres, actors: chosenActors)
             
             vc.fullPack = fullPack
             print("sending to main")

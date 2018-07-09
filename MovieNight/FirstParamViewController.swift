@@ -17,11 +17,14 @@ class FirstParamViewController: UITableViewController {
     var selectedGenres: [Genre] = []
     var deselectedGenres: [Genre] = []
     
+    var watcherNumber: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "Genres"
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
         
         client.getGenres() { genres, error in
             let decoder = JSONDecoder()
@@ -86,6 +89,7 @@ class FirstParamViewController: UITableViewController {
             chosenGenres = selectedGenres.filter { !deselectedGenres.contains($0)  }
             let vc = segue.destination as! SecondParamViewController
             vc.chosenGenres = chosenGenres
+            vc.watcherNumber = watcherNumber
         default:
             return
         }

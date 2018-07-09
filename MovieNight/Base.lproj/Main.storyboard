@@ -30,9 +30,13 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="baQ-2D-Lw5">
                                                     <rect key="frame" x="96" y="126" width="183" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Tap to choose preferences"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal" title="Tap to choose preferences">
+                                                        <color key="titleColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
                                                     <connections>
-                                                        <segue destination="GTJ-B5-NXd" kind="show" id="gEg-Jw-XaX"/>
+                                                        <action selector="watcherOne:" destination="Qyj-Kh-VZR" eventType="touchUpInside" id="Ws1-Cn-kag"/>
+                                                        <segue destination="GTJ-B5-NXd" kind="show" identifier="proceedToWatcherOne" id="gEg-Jw-XaX"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -48,6 +52,20 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="znO-Dc-5mg" id="ven-HT-TS1">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PUj-gG-Q1p">
+                                                    <rect key="frame" x="96" y="119" width="183" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal" title="Tap to choose preferences">
+                                                        <color key="titleColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="watcherTwo:" destination="Qyj-Kh-VZR" eventType="touchUpInside" id="UHI-Ky-LOm"/>
+                                                        <segue destination="GTJ-B5-NXd" kind="show" identifier="proceedToWatcherTwo" id="ZA1-67-vvA"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -60,7 +78,8 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="G94-PE-XDF"/>
                     <connections>
-                        <outlet property="button" destination="baQ-2D-Lw5" id="afG-AD-x6B"/>
+                        <outlet property="button1" destination="baQ-2D-Lw5" id="Jq2-se-AWx"/>
+                        <outlet property="button2" destination="PUj-gG-Q1p" id="IgL-Y0-HzZ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XKw-E0-ehZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -198,7 +217,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Vmb-Es-9od"/>
+        <segue reference="ZA1-67-vvA"/>
         <segue reference="dee-dN-PvX"/>
     </inferredMetricsTieBreakers>
 </document>
