@@ -16,13 +16,13 @@ struct FullPackage {
 }
 
 
-struct WatcherOneFullPackage {
+struct WatcherOneFullPackage: Codable {
     var genres: [Genre]?
     var actors: [Result]?
 }
 
 
-struct WatcherTwoFullPackage {
+struct WatcherTwoFullPackage: Codable {
     var genres: [Genre]?
     var actors: [Result]?
 }

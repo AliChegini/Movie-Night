@@ -11,8 +11,6 @@ import UIKit
 class MainViewController: UITableViewController {
     
     var watcherNumber: Int = 0
-    var watcherOne: WatcherOneFullPackage? = nil
-    var watcherTwo: WatcherTwoFullPackage? = nil
     
     @IBOutlet weak var button1: UIButton!
     
@@ -24,18 +22,28 @@ class MainViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
-        
-        if fullPack?.watcherNumber == 1 {
-            watcherOne = WatcherOneFullPackage(genres: fullPack?.genres, actors: fullPack?.actors)
-        } else if fullPack?.watcherNumber == 2 {
-            watcherTwo = WatcherTwoFullPackage(genres: fullPack?.genres, actors: fullPack?.actors)
+        // Reseting the defaults at launch
+        if UIApplication.shared.applicationState.rawValue == 1 {
+            UserDefaults.standard.removeObject(forKey: "watcherOne")
+            UserDefaults.standard.removeObject(forKey: "watcherTwo")
         }
-        print("--------------")
-        print(watcherOne)
-        print("--------------")
-        print(watcherTwo)
-        print("--------------")
+        
+        
+        // Checking which watcher provided preferences
+        if fullPack?.watcherNumber == 1 {
+            let watcherOne = WatcherOneFullPackage(genres: fullPack?.genres, actors: fullPack?.actors)
+            UserDefaults.standard.set(try? PropertyListEncoder().encode(watcherOne), forKey:"watcherOne")
+            
+        } else if fullPack?.watcherNumber == 2 {
+            let watcherTwo = WatcherTwoFullPackage(genres: fullPack?.genres, actors: fullPack?.actors)
+            UserDefaults.standard.set(try? PropertyListEncoder().encode(watcherTwo), forKey:"watcherTwo")
+            
+        }
+        
+        
     }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -67,16 +75,18 @@ class MainViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as! FirstParamViewController
-        switch segue.identifier {
-        case "proceedToWatcherOne":
-            vc.watcherNumber = 1
-        case "proceedToWatcherTwo":
-            vc.watcherNumber = 2
-        default:
-            return
+        if let vc = segue.destination as? FirstParamViewController {
+            switch segue.identifier {
+            case "proceedToWatcherOne":
+                vc.watcherNumber = 1
+            case "proceedToWatcherTwo":
+                vc.watcherNumber = 2
+            default:
+                return
+            }
+        } else {
+            print("sending to result controller")
         }
     }
-    
     
 }

@@ -9,7 +9,7 @@
 import Foundation
 
 //  Genre  decoding
-struct Genre: Decodable, Equatable {
+struct Genre: Codable, Equatable {
     var name: String?
     var id: Int?
     
@@ -20,7 +20,7 @@ struct Genre: Decodable, Equatable {
 }
 
 
-struct AllGenres: Decodable {
+struct AllGenres: Codable {
     let genres: [Genre]
 }
 
@@ -36,7 +36,7 @@ struct Result: Codable, Equatable {
     }
 }
 
-struct AllResults: Decodable {
+struct AllResults: Codable {
     let results: [Result]
 }
 
