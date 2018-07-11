@@ -13,8 +13,8 @@ class ResultViewController: UITableViewController {
     var watcherOne: WatcherOneFullPackage? = nil
     var watcherTwo: WatcherTwoFullPackage? = nil
     
-    var finalGenres: [Int] = []
-    var finalActors: [Int] = []
+    let client = MovieNightAPIClient()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,50 +32,14 @@ class ResultViewController: UITableViewController {
         }
         
         
-        guard let watcherOneUnwrapped = watcherOne else {
-            return
+        let finalGenres = client.findGenreMatches(watcherOne: watcherOne, watcherTwo: watcherTwo)
+        let finalActors = client.findActorsMatches(watcherOne: watcherOne, watcherTwo: watcherTwo)
+        
+        client.callDiscovery(genres: finalGenres!, actors: finalActors!) { data, error in
+            
         }
         
-        guard let watcherTwoUnwrapped = watcherTwo else {
-            return
-        }
-        
-        
-        
-        guard let watcherOneGenresUnwrapped = watcherOneUnwrapped.genres else {
-            return
-        }
-        
-        guard let watcherOneActorsUnwrapped = watcherOneUnwrapped.actors else {
-            return
-        }
-        
-        guard let watcherTwoGenresUnwrapped = watcherTwoUnwrapped.genres else {
-            return
-        }
-        
-        guard let watcherTwoActorsUnwrapped = watcherTwoUnwrapped.actors else {
-            return
-        }
-        
-        
-        for a in watcherOneGenresUnwrapped {
-            for b in watcherTwoGenresUnwrapped {
-                if a.id == b.id {
-                    finalGenres.append(a.id!)
-                }
-            }
-        }
-        
-        
-        for a in watcherOneActorsUnwrapped {
-            for b in watcherTwoActorsUnwrapped {
-                if a.id == b.id {
-                    finalActors.append(a.id!)
-                }
-            }
-        }
-        
+    
         
     }
 

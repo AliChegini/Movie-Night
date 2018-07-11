@@ -23,6 +23,7 @@ class MovieNightAPIClient {
     }()
     
     
+    
     let downloader = JSONDownloader()
     
     // Get genres
@@ -58,10 +59,96 @@ class MovieNightAPIClient {
     }
     
     
+    func findGenreMatches(watcherOne: WatcherOneFullPackage?, watcherTwo: WatcherTwoFullPackage?) -> [Genre]? {
+        guard let watcherOneUnwrapped = watcherOne else {
+            return nil
+        }
+        
+        guard let watcherTwoUnwrapped = watcherTwo else {
+            return nil
+        }
+        
+        guard let watcherOneGenresUnwrapped = watcherOneUnwrapped.genres else {
+            return nil
+        }
+        
+        
+        guard let watcherTwoGenresUnwrapped = watcherTwoUnwrapped.genres else {
+            return nil
+        }
+        
+        
+        var finalGenres: [Genre] = []
+        
+        // Using filter to find matches in two arrays
+        finalGenres = watcherOneGenresUnwrapped.filter { (genre) -> Bool in
+            return watcherTwoGenresUnwrapped.contains(genre)
+        }
+        
+        return finalGenres
+        
+    }
+    
+    
+    func findActorsMatches(watcherOne: WatcherOneFullPackage?, watcherTwo: WatcherTwoFullPackage?) -> [Result]? {
+        guard let watcherOneUnwrapped = watcherOne else {
+            return nil
+        }
+        
+        guard let watcherTwoUnwrapped = watcherTwo else {
+            return nil
+        }
+        
+        guard let watcherOneActorsUnwrapped = watcherOneUnwrapped.actors else {
+            return nil
+        }
+        
+        guard let watcherTwoActorsUnwrapped = watcherTwoUnwrapped.actors else {
+            return nil
+        }
+        
+        var finalActors: [Result] = []
+        
+        // Using filter to find matches in two arrays
+        finalActors = watcherOneActorsUnwrapped.filter { (actor) -> Bool in
+            return watcherTwoActorsUnwrapped.contains(actor)
+        }
+        
+        return finalActors
+        
+    }
+    
+    
     // Get Discovery
     // function to get parameter and use relative to base for constructin a URL
-    func callDiscovery() {
+    func callDiscovery(genres: [Genre], actors: [Result], completionHandler completion: @escaping (Data?, MovieNightError?) -> Void) {
+        var phrase = ""
+        if genres.count != 0 {
+            for genre in genres {
+                phrase += "\(genre.id!)|"
+            }
+            print(phrase)
+        }
         
+        guard let url = URL(string: "", relativeTo: baseDiscoveryURL) else {
+            completion(nil, .invalidURL)
+            return
+        }
+        
+        let request = URLRequest(url: url)
+        
+        print(request)
+        
+        let task = downloader.dataTask(with: request) { data, error in
+            guard let data = data else {
+                completion(nil, error)
+                return
+            }
+            
+            completion(data, nil)
+        }
+        
+        task.resume()
     }
     
     

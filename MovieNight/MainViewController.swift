@@ -12,6 +12,7 @@ class MainViewController: UITableViewController {
     
     var watcherNumber: Int = 0
     
+    
     @IBOutlet weak var button1: UIButton!
     
     @IBOutlet weak var button2: UIButton!
@@ -39,6 +40,7 @@ class MainViewController: UITableViewController {
             UserDefaults.standard.set(try? PropertyListEncoder().encode(watcherTwo), forKey:"watcherTwo")
             
         }
+        
         
         
     }
