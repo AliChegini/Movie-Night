@@ -40,7 +40,7 @@ class FirstParamViewController: UITableViewController {
                     self.allTheGenres.append(genreObject)
                 }
             }
-            print(self.allTheGenres.count)
+            //print(self.allTheGenres.count)
         }
         
     }

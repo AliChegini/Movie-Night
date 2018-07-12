@@ -45,7 +45,7 @@ class SecondParamViewController: UITableViewController {
                     self.actors.append(actorObject)
                 }
             }
-            print(self.actors.count)
+            //print(self.actors.count)
         }
 
         

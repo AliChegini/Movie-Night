@@ -29,7 +29,7 @@ class MovieNightAPIClient {
     // Get genres
     func getGenres(completionHandler completion: @escaping (Data?, MovieNightError?) -> Void) {
         let request = URLRequest(url: genreURL)
-        print(request)
+        //print(request)
         
         let task = downloader.dataTask(with: request) { data, error in
             guard let data = data else {
@@ -45,7 +45,7 @@ class MovieNightAPIClient {
     // Get actors
     func getActors(completionHandler completion: @escaping (Data?, MovieNightError?) -> Void) {
         let request = URLRequest(url: actorURL)
-        print(request)
+        //print(request)
         
         let task = downloader.dataTask(with: request) { data, error in
             guard let data = data else {
@@ -122,7 +122,9 @@ class MovieNightAPIClient {
     // Get Discovery
     // function to get parameter and use relative to base for constructin a URL
     func callDiscovery(genres: [Genre], actors: [Result], completionHandler completion: @escaping (Data?, MovieNightError?) -> Void) {
-        var phrase = ""
+        
+        var phrase = "&with_genres="
+        
         if genres.count != 0 {
             for genre in genres {
                 phrase += "\(genre.id!)|"
@@ -130,14 +132,27 @@ class MovieNightAPIClient {
             print(phrase)
         }
         
-        guard let url = URL(string: "", relativeTo: baseDiscoveryURL) else {
+        //TODO: fix the | and add it to last itteration
+        
+        
+        
+        // encoding the raw url to easily append string to end of it
+        var escapedRawURL = baseDiscoveryURL.absoluteString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        
+        print("-----------")
+        escapedRawURL!.append("&with_genres=12|")
+        print(escapedRawURL!)
+        
+        guard let url = URL(string: escapedRawURL!) else {
             completion(nil, .invalidURL)
             return
         }
         
+        print("URL is:  \(url)")
+        
+        
         let request = URLRequest(url: url)
         
-        print(request)
         
         let task = downloader.dataTask(with: request) { data, error in
             guard let data = data else {

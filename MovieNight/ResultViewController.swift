@@ -32,11 +32,25 @@ class ResultViewController: UITableViewController {
         }
         
         
-        let finalGenres = client.findGenreMatches(watcherOne: watcherOne, watcherTwo: watcherTwo)
-        let finalActors = client.findActorsMatches(watcherOne: watcherOne, watcherTwo: watcherTwo)
+        guard let finalGenres = client.findGenreMatches(watcherOne: watcherOne, watcherTwo: watcherTwo) else {
+            return
+        }
         
-        client.callDiscovery(genres: finalGenres!, actors: finalActors!) { data, error in
+        guard let finalActors = client.findActorsMatches(watcherOne: watcherOne, watcherTwo: watcherTwo) else {
+            return
+        }
+        
+        
+        
+        client.callDiscovery(genres: finalGenres, actors: finalActors) { data, error in
+            let decoder = JSONDecoder()
+            guard let data = data else {
+                print("data is empty")
+                return
+            }
             
+            let allData = try? decoder.decode(FinalMatches.self, from: data)
+            print(allData)
         }
         
     

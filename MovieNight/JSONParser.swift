@@ -25,7 +25,7 @@ struct AllGenres: Codable {
 }
 
 
-// Popular decoding
+// Popular actor decoding
 struct Result: Codable, Equatable {
     var name: String?
     var id: Int?
@@ -41,6 +41,20 @@ struct AllResults: Codable {
 }
 
 
+// Final match
+struct FinalMatch: Codable, Equatable {
+    var title: String?
+    var id: Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case title
+        case id
+    }
+}
+
+struct FinalMatches: Codable {
+    let results: [FinalMatch]
+}
 
 
 
