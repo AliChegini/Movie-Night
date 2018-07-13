@@ -1,3 +1,5 @@
+Raw Project Description:
+
 For this project you will be building an app to help two friends agree on what movie to watch. The two persons will be using with the same iPhone with the app installed, simply by handing it back and forth between them. Your app will access The Movie Database (https://www.themoviedb.org). Unlike the Star Wars API which you used for project 5, the Movie Database API is not completely open, hence an API key is required. You need to request the API key as one of the first steps.
 
 We encourage you to contemplate and experiment with the best way to get two people to select a movie. Explore the API documentation (refer to the two links provided in the Project Resource section) to see what functionalities and data are available to you. As you may discover it is often easier to think about ways you would like to fetch, parse and match the data, than it is to actually implement them. We suggest that you begin with a one or two steps matching process before embarking on anything more complex.

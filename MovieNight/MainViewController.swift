@@ -12,11 +12,8 @@ class MainViewController: UITableViewController {
     
     var watcherNumber: Int = 0
     
-    
     @IBOutlet weak var button1: UIButton!
-    
     @IBOutlet weak var button2: UIButton!
-    
     
     var fullPack: FullPackage?
     
@@ -41,10 +38,7 @@ class MainViewController: UITableViewController {
             
         }
         
-        
-        
     }
-    
     
     
     override func didReceiveMemoryWarning() {
@@ -92,3 +86,5 @@ class MainViewController: UITableViewController {
     }
     
 }
+
+

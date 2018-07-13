@@ -58,7 +58,8 @@ class MovieNightAPIClient {
         task.resume()
     }
     
-    
+    // function to find matches for Genres
+    // In case if users don't have shared Genres, only actors will be counted
     func findGenreMatches(watcherOne: WatcherOneFullPackage?, watcherTwo: WatcherTwoFullPackage?) -> [Genre]? {
         guard let watcherOneUnwrapped = watcherOne else {
             return nil
@@ -77,18 +78,17 @@ class MovieNightAPIClient {
             return nil
         }
         
-        
         var finalGenres: [Genre] = []
         
         // Using filter to find matches in two arrays
         finalGenres = watcherOneGenresUnwrapped.filter { (genre) -> Bool in
             return watcherTwoGenresUnwrapped.contains(genre)
         }
-        
         return finalGenres
     }
     
-    
+    // function to find matches for Actors
+    // In case if users don't have shared Actors, only genres will be counted
     func findActorsMatches(watcherOne: WatcherOneFullPackage?, watcherTwo: WatcherTwoFullPackage?) -> [Actor]? {
         guard let watcherOneUnwrapped = watcherOne else {
             return nil
@@ -112,7 +112,6 @@ class MovieNightAPIClient {
         finalActors = watcherOneActorsUnwrapped.filter { (actor) -> Bool in
             return watcherTwoActorsUnwrapped.contains(actor)
         }
-        
         return finalActors
     }
     
@@ -152,7 +151,6 @@ class MovieNightAPIClient {
             phrase += generatePhrase(array: actors, phraseType: .actors)
         }
         
-        print("--- This is phrase: --- \(phrase)")
         // encoding the raw url to easily append string to end of it
         var escapedRawURL = baseDiscoveryURL.absoluteString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         
@@ -170,10 +168,8 @@ class MovieNightAPIClient {
                 completion(nil, error)
                 return
             }
-            
             completion(data, nil)
         }
-        
         task.resume()
     }
     

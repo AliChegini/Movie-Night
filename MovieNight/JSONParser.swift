@@ -48,7 +48,6 @@ struct AllResults: Codable {
 }
 
 
-
 // Final match
 struct FinalMatch: Codable, Equatable {
     var title: String?
@@ -63,9 +62,5 @@ struct FinalMatch: Codable, Equatable {
 struct FinalMatches: Codable {
     let results: [FinalMatch]
 }
-
-
-
-
 
 

@@ -21,9 +21,7 @@ class SecondParamViewController: UITableViewController {
     // recieving from FirstParam
     var chosenGenres: [Genre]? = []
     var watcherNumber: Int?
-    //var fullPack: [FullPackage] = []    // array to send to mainView
-    
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         

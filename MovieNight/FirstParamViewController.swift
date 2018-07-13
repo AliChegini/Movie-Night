@@ -40,7 +40,6 @@ class FirstParamViewController: UITableViewController {
                     self.allTheGenres.append(genreObject)
                 }
             }
-            //print(self.allTheGenres.count)
         }
         
     }
@@ -61,7 +60,6 @@ class FirstParamViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = self.allTheGenres[indexPath.row].name
         
-        
         let emptyBubble: UIImage = UIImage(named: "bubble-empty")!
         cell.imageView?.image = emptyBubble
         
@@ -73,7 +71,6 @@ class FirstParamViewController: UITableViewController {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.imageView?.image = UIImage(named: "bubble-selected")!
         selectedGenres.append(self.allTheGenres[indexPath.row])
-        
     }
     
     
@@ -82,6 +79,7 @@ class FirstParamViewController: UITableViewController {
         cell?.imageView?.image = UIImage(named: "bubble-empty")!
         deselectedGenres.append(self.allTheGenres[indexPath.row])
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
@@ -95,6 +93,7 @@ class FirstParamViewController: UITableViewController {
         }
     }
 
-
-
 }
+
+
+
