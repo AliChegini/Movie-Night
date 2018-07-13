@@ -86,11 +86,10 @@ class MovieNightAPIClient {
         }
         
         return finalGenres
-        
     }
     
     
-    func findActorsMatches(watcherOne: WatcherOneFullPackage?, watcherTwo: WatcherTwoFullPackage?) -> [Result]? {
+    func findActorsMatches(watcherOne: WatcherOneFullPackage?, watcherTwo: WatcherTwoFullPackage?) -> [Actor]? {
         guard let watcherOneUnwrapped = watcherOne else {
             return nil
         }
@@ -107,7 +106,7 @@ class MovieNightAPIClient {
             return nil
         }
         
-        var finalActors: [Result] = []
+        var finalActors: [Actor] = []
         
         // Using filter to find matches in two arrays
         finalActors = watcherOneActorsUnwrapped.filter { (actor) -> Bool in
@@ -115,44 +114,56 @@ class MovieNightAPIClient {
         }
         
         return finalActors
-        
     }
     
     
-    // Get Discovery
-    // function to get parameter and use relative to base for constructin a URL
-    func callDiscovery(genres: [Genre], actors: [Result], completionHandler completion: @escaping (Data?, MovieNightError?) -> Void) {
+    // function to construct a string phrase
+    func generatePhrase(array: [GenreAndActor], phraseType: PhraseType) -> String {
+        var phrase = phraseType.rawValue
         
-        var phrase = "&with_genres="
+        // counter to track the last iteration
+        let arraySize = array.count
+        var counter = 0
+        
+        if arraySize != 0 {
+            for element in array {
+                if arraySize - counter > 1 {
+                    // comma, is equal to AND operator between values
+                    phrase += "\(element.id!),"
+                } else if arraySize - counter == 1 {    // branch to cover last itteration
+                    phrase += "\(element.id!)"
+                }
+                counter += 1
+            }
+        }
+        return phrase
+    }
+    
+    
+    // Discovery function
+    func callDiscovery(genres: [Genre], actors: [Actor], completionHandler completion: @escaping (Data?, MovieNightError?) -> Void) {
+        var phrase = ""
         
         if genres.count != 0 {
-            for genre in genres {
-                phrase += "\(genre.id!)|"
-            }
-            print(phrase)
+            phrase += generatePhrase(array: genres, phraseType: .genres)
         }
         
-        //TODO: fix the | and add it to last itteration
+        if actors.count != 0 {
+            phrase += generatePhrase(array: actors, phraseType: .actors)
+        }
         
-        
-        
+        print("--- This is phrase: --- \(phrase)")
         // encoding the raw url to easily append string to end of it
         var escapedRawURL = baseDiscoveryURL.absoluteString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         
-        print("-----------")
-        escapedRawURL!.append("&with_genres=12|")
-        print(escapedRawURL!)
+        escapedRawURL!.append(phrase)
         
         guard let url = URL(string: escapedRawURL!) else {
             completion(nil, .invalidURL)
             return
         }
         
-        print("URL is:  \(url)")
-        
-        
         let request = URLRequest(url: url)
-        
         
         let task = downloader.dataTask(with: request) { data, error in
             guard let data = data else {
@@ -165,7 +176,6 @@ class MovieNightAPIClient {
         
         task.resume()
     }
-    
     
     
 }

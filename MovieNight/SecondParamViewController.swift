@@ -11,11 +11,11 @@ import UIKit
 class SecondParamViewController: UITableViewController {
 
     let client = MovieNightAPIClient()
-    var actors: [Result] = []   // all actors
-    var selectedActors: [Result] = []
-    var deselectedActors: [Result] = []
+    var actors: [Actor] = []   // all actors
+    var selectedActors: [Actor] = []
+    var deselectedActors: [Actor] = []
     // array after filtering deselected
-    var chosenActors: [Result] = []
+    var chosenActors: [Actor] = []
     
 
     // recieving from FirstParam
@@ -41,14 +41,12 @@ class SecondParamViewController: UITableViewController {
             
             if let responseBucketUnwrapped = responseBucket {
                 for response in responseBucketUnwrapped.results {
-                    let actorObject = Result(name: response.name, id: response.id)
+                    let actorObject = Actor(name: response.name, id: response.id)
                     self.actors.append(actorObject)
                 }
             }
-            //print(self.actors.count)
         }
 
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -76,20 +74,13 @@ class SecondParamViewController: UITableViewController {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.imageView?.image = UIImage(named: "bubble-selected")!
         selectedActors.append(self.actors[indexPath.row])
-        print("selected")
-        print(selectedActors)
-        print("---")
     }
     
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.imageView?.image = UIImage(named: "bubble-empty")!
-        
         deselectedActors.append(self.actors[indexPath.row])
-        print("deselected")
-        print(deselectedActors)
-        print("---")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

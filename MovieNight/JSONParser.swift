@@ -8,8 +8,15 @@
 
 import Foundation
 
+
+protocol GenreAndActor {
+    var name: String? { get set }
+    var id: Int? { get set }
+}
+
+
 //  Genre  decoding
-struct Genre: Codable, Equatable {
+struct Genre: Codable, Equatable, GenreAndActor {
     var name: String?
     var id: Int?
     
@@ -26,7 +33,7 @@ struct AllGenres: Codable {
 
 
 // Popular actor decoding
-struct Result: Codable, Equatable {
+struct Actor: Codable, Equatable, GenreAndActor {
     var name: String?
     var id: Int?
     
@@ -37,8 +44,9 @@ struct Result: Codable, Equatable {
 }
 
 struct AllResults: Codable {
-    let results: [Result]
+    let results: [Actor]
 }
+
 
 
 // Final match

@@ -12,19 +12,25 @@ import Foundation
 struct FullPackage {
     var watcherNumber: Int
     var genres: [Genre]?
-    var actors: [Result]?
+    var actors: [Actor]?
 }
 
 
 struct WatcherOneFullPackage: Codable {
     var genres: [Genre]?
-    var actors: [Result]?
+    var actors: [Actor]?
 }
 
 
 struct WatcherTwoFullPackage: Codable {
     var genres: [Genre]?
-    var actors: [Result]?
+    var actors: [Actor]?
+}
+
+
+enum PhraseType: String {
+    case genres = "&with_genres="
+    case actors = "&with_people="
 }
 
 
