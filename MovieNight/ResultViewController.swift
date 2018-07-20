@@ -24,6 +24,8 @@ class ResultViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.tableFooterView = UIView()
+        
         self.title = "Final Result"
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
@@ -60,6 +62,13 @@ class ResultViewController: UITableViewController {
                     let matchObject = FinalMatch(title: match.title, id: match.id)
                     self.allMatches.append(matchObject)
                 }
+                
+                // if allMatches is empty, show alert
+                if self.allMatches.count == 0 {
+                    let alert = UIAlertController(title: "Error", message: "No Matching Result \nPlease try again using different combination...", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                }
             }
         }
         
@@ -73,13 +82,6 @@ class ResultViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        // if allMatches is empty, show alert
-        if self.allMatches.count == 0 {
-            let alert = UIAlertController(title: "Error", message: "No Matching Result \nPlease try again...", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alert, animated: true)
-        }
         return self.allMatches.count
     }
     

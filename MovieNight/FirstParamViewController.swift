@@ -12,7 +12,7 @@ class FirstParamViewController: UITableViewController {
 
     let client = MovieNightAPIClient()
     var allTheGenres: [Genre] = []
-    var chosenGenres: [Genre] = []
+    var chosenGenres: [Genre] = []  // array to hold genres after selection process
     
     var selectedGenres: [Genre] = []
     var deselectedGenres: [Genre] = []

@@ -135,6 +135,7 @@ class MovieNightAPIClient {
                 counter += 1
             }
         }
+        
         return phrase
     }
     
@@ -168,8 +169,10 @@ class MovieNightAPIClient {
                 completion(nil, error)
                 return
             }
+            
             completion(data, nil)
         }
+        
         task.resume()
     }
     
