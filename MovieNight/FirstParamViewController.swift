@@ -52,13 +52,16 @@ class FirstParamViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.allTheGenres.count
+        if allTheGenres.count == 0 {
+            showAlert()
+        }
+        return allTheGenres.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = self.allTheGenres[indexPath.row].name
+        cell.textLabel?.text = allTheGenres[indexPath.row].name
         
         let emptyBubble: UIImage = UIImage(named: "bubble-empty")!
         cell.imageView?.image = emptyBubble
@@ -70,14 +73,14 @@ class FirstParamViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.imageView?.image = UIImage(named: "bubble-selected")!
-        selectedGenres.append(self.allTheGenres[indexPath.row])
+        selectedGenres.append(allTheGenres[indexPath.row])
     }
     
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.imageView?.image = UIImage(named: "bubble-empty")!
-        deselectedGenres.append(self.allTheGenres[indexPath.row])
+        deselectedGenres.append(allTheGenres[indexPath.row])
     }
     
     

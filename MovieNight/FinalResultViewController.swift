@@ -1,17 +1,14 @@
 //
-//  ResultViewController.swift
+//  FinalResultViewController.swift
 //  MovieNight
 //
-//  Created by Ehsan on 10/07/2018.
+//  Created by Ehsan on 03/09/2018.
 //  Copyright © 2018 Ali C. All rights reserved.
 //
 
 import UIKit
 
-// Result will only shown if there are matches between actors selected
-// and Genre selected by both users
-// In the case of no match alert will be shown to user to try again
-class ResultViewController: UITableViewController {
+class FinalResultViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var watcherOne: WatcherOneFullPackage? = nil
     var watcherTwo: WatcherTwoFullPackage? = nil
@@ -20,14 +17,16 @@ class ResultViewController: UITableViewController {
     
     var allMatches: [FinalMatch] = []
     
-
+    @IBOutlet weak var tableView: UITableView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.tableFooterView = UIView()
         
         self.title = "Final Result"
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        //self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         // Reading User Defaults
         if let data = UserDefaults.standard.value(forKey: "watcherOne") as? Data {
@@ -62,40 +61,31 @@ class ResultViewController: UITableViewController {
                     let matchObject = FinalMatch(title: match.title, id: match.id)
                     self.allMatches.append(matchObject)
                 }
-                
-                // if allMatches is empty, show alert
-                if self.allMatches.count == 0 {
-                    let alert = UIAlertController(title: "Error", message: "No Matching Result \nPlease try again using different combination...", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.present(alert, animated: true)
-                }
             }
         }
         
     }
     
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.allMatches.count
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return allMatches.count
     }
     
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = self.allMatches[indexPath.row].title
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: MyCustomCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MyCustomCell
+        
+        cell.myCellLabel.text = allMatches[indexPath.row].title
         
         return cell
     }
-
+    
     
 }
-
-
-
-

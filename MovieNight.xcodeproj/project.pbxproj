@@ -11,6 +11,9 @@
 		7C0DF9A120E29B4A008BB3FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C0DF99F20E29B4A008BB3FF /* Main.storyboard */; };
 		7C0DF9A320E29B4C008BB3FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C0DF9A220E29B4C008BB3FF /* Assets.xcassets */; };
 		7C0DF9A620E29B4C008BB3FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C0DF9A420E29B4C008BB3FF /* LaunchScreen.storyboard */; };
+		7C0E9F5D213D91AC0039A4BD /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0E9F5C213D91AC0039A4BD /* Extension.swift */; };
+		7C0E9F5F213DA2DE0039A4BD /* MyCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0E9F5E213DA2DE0039A4BD /* MyCustomCell.swift */; };
+		7C0E9F61213DA8DE0039A4BD /* FinalResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0E9F60213DA8DE0039A4BD /* FinalResultViewController.swift */; };
 		7C122DBE20EA589B00B2EFC1 /* SecondParamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C122DBD20EA589B00B2EFC1 /* SecondParamViewController.swift */; };
 		7C15BFDE20EF8EDE00809A17 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C15BFDD20EF8EDE00809A17 /* MainViewController.swift */; };
 		7C60909420F1E0040095E8F5 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C60909320F1E0040095E8F5 /* Model.swift */; };
@@ -19,7 +22,6 @@
 		7C6BFBDC20E5A3F6002B9383 /* MovieNightErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6BFBDB20E5A3F6002B9383 /* MovieNightErrors.swift */; };
 		7C6BFBDE20E5A7AF002B9383 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6BFBDD20E5A7AF002B9383 /* JSONParser.swift */; };
 		7C6BFBE020E5A7ED002B9383 /* MovieNightClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6BFBDF20E5A7ED002B9383 /* MovieNightClient.swift */; };
-		7CF2C11820F4AF930035AD1C /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF2C11720F4AF930035AD1C /* ResultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,9 @@
 		7C0DF9A220E29B4C008BB3FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7C0DF9A520E29B4C008BB3FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7C0DF9A720E29B4C008BB3FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C0E9F5C213D91AC0039A4BD /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		7C0E9F5E213DA2DE0039A4BD /* MyCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomCell.swift; sourceTree = "<group>"; };
+		7C0E9F60213DA8DE0039A4BD /* FinalResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalResultViewController.swift; sourceTree = "<group>"; };
 		7C122DBD20EA589B00B2EFC1 /* SecondParamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondParamViewController.swift; sourceTree = "<group>"; };
 		7C15BFDD20EF8EDE00809A17 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		7C60909320F1E0040095E8F5 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -37,7 +42,6 @@
 		7C6BFBDB20E5A3F6002B9383 /* MovieNightErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieNightErrors.swift; sourceTree = "<group>"; };
 		7C6BFBDD20E5A7AF002B9383 /* JSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
 		7C6BFBDF20E5A7ED002B9383 /* MovieNightClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieNightClient.swift; sourceTree = "<group>"; };
-		7CF2C11720F4AF930035AD1C /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,14 +76,16 @@
 			children = (
 				7C0DF99B20E29B4A008BB3FF /* AppDelegate.swift */,
 				7C15BFDD20EF8EDE00809A17 /* MainViewController.swift */,
-				7CF2C11720F4AF930035AD1C /* ResultViewController.swift */,
 				7C6BFBD720E59911002B9383 /* FirstParamViewController.swift */,
 				7C122DBD20EA589B00B2EFC1 /* SecondParamViewController.swift */,
+				7C0E9F60213DA8DE0039A4BD /* FinalResultViewController.swift */,
 				7C6BFBD920E5A3B6002B9383 /* JSONDownloader.swift */,
 				7C6BFBDB20E5A3F6002B9383 /* MovieNightErrors.swift */,
 				7C6BFBDD20E5A7AF002B9383 /* JSONParser.swift */,
 				7C6BFBDF20E5A7ED002B9383 /* MovieNightClient.swift */,
 				7C60909320F1E0040095E8F5 /* Model.swift */,
+				7C0E9F5C213D91AC0039A4BD /* Extension.swift */,
+				7C0E9F5E213DA2DE0039A4BD /* MyCustomCell.swift */,
 				7C0DF99F20E29B4A008BB3FF /* Main.storyboard */,
 				7C0DF9A220E29B4C008BB3FF /* Assets.xcassets */,
 				7C0DF9A420E29B4C008BB3FF /* LaunchScreen.storyboard */,
@@ -163,8 +169,10 @@
 				7C6BFBE020E5A7ED002B9383 /* MovieNightClient.swift in Sources */,
 				7C6BFBDA20E5A3B6002B9383 /* JSONDownloader.swift in Sources */,
 				7C6BFBDC20E5A3F6002B9383 /* MovieNightErrors.swift in Sources */,
+				7C0E9F5D213D91AC0039A4BD /* Extension.swift in Sources */,
 				7C6BFBDE20E5A7AF002B9383 /* JSONParser.swift in Sources */,
-				7CF2C11820F4AF930035AD1C /* ResultViewController.swift in Sources */,
+				7C0E9F61213DA8DE0039A4BD /* FinalResultViewController.swift in Sources */,
+				7C0E9F5F213DA2DE0039A4BD /* MyCustomCell.swift in Sources */,
 				7C6BFBD820E59911002B9383 /* FirstParamViewController.swift in Sources */,
 				7C15BFDE20EF8EDE00809A17 /* MainViewController.swift in Sources */,
 				7C122DBE20EA589B00B2EFC1 /* SecondParamViewController.swift in Sources */,

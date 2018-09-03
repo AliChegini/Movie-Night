@@ -30,11 +30,11 @@ class JSONDownloader {
                 case .notConnectedToInternet:
                     let alert = UIAlertController(title: "Error", message: "No Internet Connection \nPlease try again later...", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    //alert.presentInOwnWindow(animated: true, completion: nil)
+                    alert.presentInOwnWindow(animated: true, completion: nil)
                 case .networkConnectionLost:
                     let alert = UIAlertController(title: "Error", message: "Connection Lost \nPlease try again later...", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    //alert.presentInOwnWindow(animated: true, completion: nil)
+                    alert.presentInOwnWindow(animated: true, completion: nil)
                 default: break
                 }
             }
