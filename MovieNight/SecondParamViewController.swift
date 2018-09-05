@@ -11,7 +11,10 @@ import UIKit
 class SecondParamViewController: UITableViewController {
 
     let client = MovieNightAPIClient()
-    var actors: [Actor] = []   // all actors
+    // array to hold all actors received form FirstParamViewController
+    var actors: [Actor]? = nil
+    var actorsUnwrapped : [Actor] = []
+    
     var selectedActors: [Actor] = []
     var deselectedActors: [Actor] = []
     // array after filtering deselected
@@ -21,6 +24,7 @@ class SecondParamViewController: UITableViewController {
     // recieving from FirstParam
     var chosenGenres: [Genre]? = []
     var watcherNumber: Int?
+    var watcherNumberUnwrapped: Int = 0
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,22 +32,14 @@ class SecondParamViewController: UITableViewController {
         self.title = "Actors/Actresses"
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
-        client.getActors() { bucket, error in
-            let decoder = JSONDecoder()
-            guard let bucket = bucket else {
-                print("actor is empty")
-                return
-            }
-            
-            let responseBucket = try? decoder.decode(AllResults.self, from: bucket)
-            
-            if let responseBucketUnwrapped = responseBucket {
-                for response in responseBucketUnwrapped.results {
-                    let actorObject = Actor(name: response.name, id: response.id)
-                    self.actors.append(actorObject)
-                }
-            }
+        if let allActors = actors {
+            actorsUnwrapped = allActors
         }
+        
+        if let number = watcherNumber {
+            watcherNumberUnwrapped = number
+        }
+        
 
     }
 
@@ -53,16 +49,13 @@ class SecondParamViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if actors.count == 0 {
-            showAlert()
-        }
-        return actors.count
+        return actorsUnwrapped.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = actors[indexPath.row].name
+        cell.textLabel?.text = actorsUnwrapped[indexPath.row].name
         
         let emptyBubble: UIImage = UIImage(named: "bubble-empty")!
         cell.imageView?.image = emptyBubble
@@ -74,23 +67,27 @@ class SecondParamViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.imageView?.image = UIImage(named: "bubble-selected")!
-        selectedActors.append(actors[indexPath.row])
+        selectedActors.append(actorsUnwrapped[indexPath.row])
     }
     
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.imageView?.image = UIImage(named: "bubble-empty")!
-        deselectedActors.append(actors[indexPath.row])
+        deselectedActors.append(actorsUnwrapped[indexPath.row])
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "proceedToMainSegue":
             chosenActors = selectedActors.filter { !deselectedActors.contains($0)  }
+            
             let vc = segue.destination as! MainViewController
             
-            let fullPack = FullPackage(watcherNumber: watcherNumber!, genres: chosenGenres, actors: chosenActors)
+            // Constructing a full package and sending it to main
+            // Full package has both criteria chosed by user inclusing watcher number
+            let fullPack = FullPackage(watcherNumber: watcherNumberUnwrapped, genres: chosenGenres, actors: chosenActors)
             
             vc.fullPack = fullPack
             print("sending to main")

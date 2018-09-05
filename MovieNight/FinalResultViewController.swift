@@ -26,7 +26,6 @@ class FinalResultViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.tableFooterView = UIView()
         
         self.title = "Final Result"
-        //self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         // Reading User Defaults
         if let data = UserDefaults.standard.value(forKey: "watcherOne") as? Data {

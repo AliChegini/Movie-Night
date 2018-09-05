@@ -17,6 +17,12 @@ class MainViewController: UITableViewController {
     
     var fullPack: FullPackage?
     
+    let client = MovieNightAPIClient()
+    
+    var allTheGenres: [Genre] = []
+    var actors: [Actor] = []
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
@@ -36,6 +42,23 @@ class MainViewController: UITableViewController {
             let watcherTwo = WatcherTwoFullPackage(genres: fullPack?.genres, actors: fullPack?.actors)
             UserDefaults.standard.set(try? PropertyListEncoder().encode(watcherTwo), forKey:"watcherTwo")
             
+        }
+        
+        // Asynch call to get all genres to pass it to other view
+        client.getGenres() { genres, error in
+            let decoder = JSONDecoder()
+            guard let genres = genres else {
+                print("genre is empty")
+                return
+            }
+            
+            let allGenres = try? decoder.decode(AllGenres.self, from: genres)
+            if let allGenresUnwrapped = allGenres {
+                for genre in allGenresUnwrapped.genres {
+                    let genreObject = Genre(name: genre.name, id: genre.id)
+                    self.allTheGenres.append(genreObject)
+                }
+            }
         }
         
     }
@@ -71,18 +94,21 @@ class MainViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? FirstParamViewController {
-            switch segue.identifier {
-            case "proceedToWatcherOne":
+        switch segue.identifier {
+        case "proceedToWatcherOne":
+            if let vc = segue.destination as? FirstParamViewController {
                 vc.watcherNumber = 1
-            case "proceedToWatcherTwo":
-                vc.watcherNumber = 2
-            default:
-                return
+                vc.allTheGenres = allTheGenres
             }
-        } else {
-            print("sending to result controller")
+        case "proceedToWatcherTwo":
+            if let vc = segue.destination as? FirstParamViewController {
+                vc.watcherNumber = 2
+                vc.allTheGenres = allTheGenres
+            }
+        default:
+            return
         }
+        
     }
     
 }

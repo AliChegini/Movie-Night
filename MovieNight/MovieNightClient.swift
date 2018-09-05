@@ -42,6 +42,7 @@ class MovieNightAPIClient {
         task.resume()
     }
     
+    
     // Get actors
     func getActors(completionHandler completion: @escaping (Data?, MovieNightError?) -> Void) {
         let request = URLRequest(url: actorURL)
@@ -57,6 +58,7 @@ class MovieNightAPIClient {
         
         task.resume()
     }
+    
     
     // function to find matches for Genres
     // In case if users don't have shared Genres, only actors will be counted
@@ -86,6 +88,7 @@ class MovieNightAPIClient {
         }
         return finalGenres
     }
+    
     
     // function to find matches for Actors
     // In case if users don't have shared Actors, only genres will be counted
@@ -140,7 +143,8 @@ class MovieNightAPIClient {
     }
     
     
-    // Discovery function
+    // Discovery function takes arrays of genres and actors and find matches between them
+    // then call the API to get the result
     func callDiscovery(genres: [Genre], actors: [Actor], completionHandler completion: @escaping (Data?, MovieNightError?) -> Void) {
         var phrase = ""
         
@@ -156,6 +160,7 @@ class MovieNightAPIClient {
         var escapedRawURL = baseDiscoveryURL.absoluteString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         
         escapedRawURL!.append(phrase)
+        
         
         guard let url = URL(string: escapedRawURL!) else {
             completion(nil, .invalidURL)
