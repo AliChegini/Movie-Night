@@ -161,27 +161,20 @@ class MovieNightAPIClient {
         
         escapedRawURL!.append(phrase)
         
-        
         guard let url = URL(string: escapedRawURL!) else {
             completion(nil, .invalidURL)
             return
         }
         
         let request = URLRequest(url: url)
-        
         let task = downloader.dataTask(with: request) { data, error in
             guard let data = data else {
                 completion(nil, error)
                 return
             }
-            
             completion(data, nil)
         }
-        
         task.resume()
     }
     
-    
 }
-
-

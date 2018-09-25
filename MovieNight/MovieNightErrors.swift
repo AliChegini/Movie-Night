@@ -15,8 +15,3 @@ enum MovieNightError: Error {
     case noInternetConnection
 }
 
-
-
-
-
-

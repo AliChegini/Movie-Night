@@ -22,6 +22,7 @@
 		7C6BFBDC20E5A3F6002B9383 /* MovieNightErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6BFBDB20E5A3F6002B9383 /* MovieNightErrors.swift */; };
 		7C6BFBDE20E5A7AF002B9383 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6BFBDD20E5A7AF002B9383 /* JSONParser.swift */; };
 		7C6BFBE020E5A7ED002B9383 /* MovieNightClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6BFBDF20E5A7ED002B9383 /* MovieNightClient.swift */; };
+		7C92A66D215A68A20092B668 /* MatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C92A66C215A68A20092B668 /* MatchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		7C6BFBDB20E5A3F6002B9383 /* MovieNightErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieNightErrors.swift; sourceTree = "<group>"; };
 		7C6BFBDD20E5A7AF002B9383 /* JSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
 		7C6BFBDF20E5A7ED002B9383 /* MovieNightClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieNightClient.swift; sourceTree = "<group>"; };
+		7C92A66C215A68A20092B668 /* MatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,12 +80,13 @@
 				7C15BFDD20EF8EDE00809A17 /* MainViewController.swift */,
 				7C6BFBD720E59911002B9383 /* FirstParamViewController.swift */,
 				7C122DBD20EA589B00B2EFC1 /* SecondParamViewController.swift */,
+				7C92A66C215A68A20092B668 /* MatchViewController.swift */,
 				7C0E9F60213DA8DE0039A4BD /* FinalResultViewController.swift */,
 				7C6BFBD920E5A3B6002B9383 /* JSONDownloader.swift */,
-				7C6BFBDB20E5A3F6002B9383 /* MovieNightErrors.swift */,
-				7C6BFBDD20E5A7AF002B9383 /* JSONParser.swift */,
 				7C6BFBDF20E5A7ED002B9383 /* MovieNightClient.swift */,
+				7C6BFBDD20E5A7AF002B9383 /* JSONParser.swift */,
 				7C60909320F1E0040095E8F5 /* Model.swift */,
+				7C6BFBDB20E5A3F6002B9383 /* MovieNightErrors.swift */,
 				7C0E9F5C213D91AC0039A4BD /* Extension.swift */,
 				7C0E9F5E213DA2DE0039A4BD /* MyCustomCell.swift */,
 				7C0DF99F20E29B4A008BB3FF /* Main.storyboard */,
@@ -166,6 +169,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C60909420F1E0040095E8F5 /* Model.swift in Sources */,
+				7C92A66D215A68A20092B668 /* MatchViewController.swift in Sources */,
 				7C6BFBE020E5A7ED002B9383 /* MovieNightClient.swift in Sources */,
 				7C6BFBDA20E5A3B6002B9383 /* JSONDownloader.swift in Sources */,
 				7C6BFBDC20E5A3F6002B9383 /* MovieNightErrors.swift in Sources */,

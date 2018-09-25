@@ -74,20 +74,11 @@
                                                         <segue destination="GTJ-B5-NXd" kind="show" identifier="proceedToWatcherTwo" id="ZA1-67-vvA"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If result did not show up come back to main screen and tap View Result again" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Xe-Xf-fDL">
-                                                    <rect key="frame" x="0.0" y="160.5" width="375" height="38.5"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="7Xe-Xf-fDL" firstAttribute="leading" secondItem="ven-HT-TS1" secondAttribute="leading" id="44S-Ff-Qc7"/>
                                                 <constraint firstItem="PUj-gG-Q1p" firstAttribute="centerX" secondItem="ven-HT-TS1" secondAttribute="centerX" id="9AV-7v-3Nl"/>
                                                 <constraint firstItem="PUj-gG-Q1p" firstAttribute="leading" secondItem="ven-HT-TS1" secondAttribute="leadingMargin" constant="30" id="NxB-gb-t3c"/>
-                                                <constraint firstAttribute="bottom" secondItem="7Xe-Xf-fDL" secondAttribute="bottom" id="QmU-kS-zcj"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="PUj-gG-Q1p" secondAttribute="trailing" constant="30" id="SiG-sM-yxp"/>
-                                                <constraint firstAttribute="trailing" secondItem="7Xe-Xf-fDL" secondAttribute="trailing" id="sl5-PB-Kp3"/>
                                                 <constraint firstItem="PUj-gG-Q1p" firstAttribute="centerY" secondItem="ven-HT-TS1" secondAttribute="centerY" id="vBD-Si-tdP"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -101,22 +92,22 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c9g-9p-1AM">
-                                                    <rect key="frame" x="10" y="0.0" width="355" height="43"/>
+                                                    <rect key="frame" x="20" y="0.0" width="335" height="43"/>
                                                     <color key="backgroundColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                    <state key="normal" title="View Result">
+                                                    <state key="normal" title="Match Preferences">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <segue destination="btM-8Q-ByP" kind="show" identifier="proceedToFinalResult" id="7JT-zD-PvE"/>
+                                                        <segue destination="ojp-9O-U7P" kind="show" id="GvC-cJ-gOY"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="c9g-9p-1AM" secondAttribute="bottom" id="4NI-fz-exG"/>
-                                                <constraint firstItem="c9g-9p-1AM" firstAttribute="leading" secondItem="jUh-0l-v86" secondAttribute="leading" constant="10" id="DCZ-nq-NWZ"/>
+                                                <constraint firstItem="c9g-9p-1AM" firstAttribute="leading" secondItem="jUh-0l-v86" secondAttribute="leading" constant="20" id="DCZ-nq-NWZ"/>
                                                 <constraint firstItem="c9g-9p-1AM" firstAttribute="top" secondItem="jUh-0l-v86" secondAttribute="top" id="DhN-nL-ulM"/>
-                                                <constraint firstAttribute="trailing" secondItem="c9g-9p-1AM" secondAttribute="trailing" constant="10" id="a6Q-Wb-EQh"/>
+                                                <constraint firstAttribute="trailing" secondItem="c9g-9p-1AM" secondAttribute="trailing" constant="20" id="a6Q-Wb-EQh"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -137,6 +128,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XKw-E0-ehZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="982" y="34"/>
+        </scene>
+        <!--Match View Controller-->
+        <scene sceneID="FQC-IL-Jbg">
+            <objects>
+                <viewController id="ojp-9O-U7P" customClass="MatchViewController" customModule="MovieNight" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Zbo-xh-aO7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r9p-1w-WQv">
+                                <rect key="frame" x="40" y="315.5" width="295" height="36"/>
+                                <color key="backgroundColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="View Result"/>
+                                <connections>
+                                    <segue destination="btM-8Q-ByP" kind="show" identifier="matchPreferencesSegue" id="hTQ-YG-eua"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If there be matches they will be presented to you in View Result" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udG-c1-PWV">
+                                <rect key="frame" x="10" y="217.5" width="355" height="48"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nho-ZO-lIw" firstAttribute="trailing" secondItem="r9p-1w-WQv" secondAttribute="trailing" constant="40" id="HTa-a5-qoc"/>
+                            <constraint firstItem="udG-c1-PWV" firstAttribute="leading" secondItem="nho-ZO-lIw" secondAttribute="leading" constant="10" id="exQ-1c-Xgl"/>
+                            <constraint firstAttribute="trailing" secondItem="udG-c1-PWV" secondAttribute="trailing" constant="10" id="nHR-dp-rsL"/>
+                            <constraint firstItem="r9p-1w-WQv" firstAttribute="centerX" secondItem="Zbo-xh-aO7" secondAttribute="centerX" id="oFO-SZ-CTf"/>
+                            <constraint firstItem="r9p-1w-WQv" firstAttribute="top" secondItem="udG-c1-PWV" secondAttribute="bottom" constant="50" id="ogM-rq-jS0"/>
+                            <constraint firstItem="r9p-1w-WQv" firstAttribute="centerY" secondItem="Zbo-xh-aO7" secondAttribute="centerY" id="oyL-vd-WF2"/>
+                            <constraint firstItem="r9p-1w-WQv" firstAttribute="leading" secondItem="nho-ZO-lIw" secondAttribute="leading" constant="40" id="q5g-7B-rvx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="nho-ZO-lIw"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fLG-DQ-GG6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="981.60000000000002" y="740.7796101949026"/>
         </scene>
         <!--Final Result View Controller-->
         <scene sceneID="DIb-5L-eBh">
@@ -197,7 +230,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d4x-Xc-QYo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="982" y="778"/>
+            <point key="canvasLocation" x="982" y="1478"/>
         </scene>
         <!--First Param View Controller-->
         <scene sceneID="hBN-Sq-siO">
